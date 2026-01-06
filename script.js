@@ -180,6 +180,30 @@ skillProgressBars.forEach(bar => {
 // ===========================
 const contactForm = document.getElementById('contactForm');
 
+function showNotification(message, type = 'success') {
+    const notification = document.createElement('div');
+    notification.style.cssText = `
+        position: fixed;
+        top: 20px;
+        right: 20px;
+        padding: 1rem 2rem;
+        background: ${type === 'success' ? 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)' : '#f5576c'};
+        color: white;
+        border-radius: 10px;
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+        z-index: 10000;
+        animation: slideIn 0.3s ease;
+        font-weight: 500;
+    `;
+    notification.textContent = message;
+    document.body.appendChild(notification);
+    
+    setTimeout(() => {
+        notification.style.animation = 'slideOut 0.3s ease';
+        setTimeout(() => notification.remove(), 300);
+    }, 3000);
+}
+
 contactForm.addEventListener('submit', (e) => {
     e.preventDefault();
     
@@ -191,10 +215,10 @@ contactForm.addEventListener('submit', (e) => {
     // Simple validation
     if (name && email && message) {
         // In a real application, you would send this data to a server
-        alert(`Thank you, ${name}! Your message has been received. I'll get back to you soon at ${email}.`);
+        showNotification(`Thank you, ${name}! Your message has been received.`);
         contactForm.reset();
     } else {
-        alert('Please fill in all fields.');
+        showNotification('Please fill in all fields.', 'error');
     }
 });
 
@@ -237,19 +261,50 @@ window.addEventListener('scroll', () => {
 // ===========================
 // Cursor Custom Effect (Optional Enhancement)
 // ===========================
+const MOBILE_BREAKPOINT = 968;
+
+const cursorStyle = document.createElement('style');
+cursorStyle.textContent = `
+    .custom-cursor {
+        position: fixed;
+        width: 20px;
+        height: 20px;
+        border: 2px solid var(--primary-color);
+        border-radius: 50%;
+        pointer-events: none;
+        z-index: 9999;
+        transition: transform 0.2s ease, opacity 0.2s ease;
+        display: none;
+    }
+    .custom-cursor.hover {
+        transform: scale(1.5);
+        opacity: 0.5;
+    }
+    @keyframes slideIn {
+        from {
+            transform: translateX(100%);
+            opacity: 0;
+        }
+        to {
+            transform: translateX(0);
+            opacity: 1;
+        }
+    }
+    @keyframes slideOut {
+        from {
+            transform: translateX(0);
+            opacity: 1;
+        }
+        to {
+            transform: translateX(100%);
+            opacity: 0;
+        }
+    }
+`;
+document.head.appendChild(cursorStyle);
+
 const cursor = document.createElement('div');
 cursor.className = 'custom-cursor';
-cursor.style.cssText = `
-    position: fixed;
-    width: 20px;
-    height: 20px;
-    border: 2px solid var(--primary-color);
-    border-radius: 50%;
-    pointer-events: none;
-    z-index: 9999;
-    transition: transform 0.2s ease, opacity 0.2s ease;
-    display: none;
-`;
 document.body.appendChild(cursor);
 
 let cursorX = 0;
@@ -271,8 +326,18 @@ function animateCursor() {
 }
 
 // Only show custom cursor on larger screens
-if (window.innerWidth > 968) {
-    cursor.style.display = 'block';
+function updateCursorVisibility() {
+    if (window.innerWidth > MOBILE_BREAKPOINT) {
+        cursor.style.display = 'block';
+    } else {
+        cursor.style.display = 'none';
+    }
+}
+
+updateCursorVisibility();
+window.addEventListener('resize', updateCursorVisibility);
+
+if (window.innerWidth > MOBILE_BREAKPOINT) {
     animateCursor();
 }
 
@@ -280,13 +345,11 @@ if (window.innerWidth > 968) {
 const interactiveElements = document.querySelectorAll('a, button, .btn');
 interactiveElements.forEach(element => {
     element.addEventListener('mouseenter', () => {
-        cursor.style.transform = 'scale(1.5)';
-        cursor.style.opacity = '0.5';
+        cursor.classList.add('hover');
     });
     
     element.addEventListener('mouseleave', () => {
-        cursor.style.transform = 'scale(1)';
-        cursor.style.opacity = '1';
+        cursor.classList.remove('hover');
     });
 });
 

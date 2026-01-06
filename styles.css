@@ -141,7 +141,7 @@ body {
     justify-content: center;
     align-items: center;
     position: relative;
-    background: linear-gradient(135deg, #667eea15 0%, #764ba215 100%);
+    background: linear-gradient(135deg, rgba(102, 126, 234, 0.08) 0%, rgba(118, 75, 162, 0.08) 100%);
     padding: 100px 20px 60px;
     overflow: hidden;
 }
@@ -256,7 +256,7 @@ body {
 .shape-1 {
     width: 200px;
     height: 200px;
-    background: linear-gradient(135deg, #667eea30 0%, #764ba230 100%);
+    background: linear-gradient(135deg, rgba(102, 126, 234, 0.19) 0%, rgba(118, 75, 162, 0.19) 100%);
     top: 10%;
     left: 10%;
     animation-delay: 0s;
@@ -265,7 +265,7 @@ body {
 .shape-2 {
     width: 150px;
     height: 150px;
-    background: linear-gradient(135deg, #f093fb30 0%, #f5576c30 100%);
+    background: linear-gradient(135deg, rgba(240, 147, 251, 0.19) 0%, rgba(245, 87, 108, 0.19) 100%);
     top: 50%;
     right: 10%;
     animation-delay: 1s;
@@ -274,7 +274,7 @@ body {
 .shape-3 {
     width: 180px;
     height: 180px;
-    background: linear-gradient(135deg, #667eea20 0%, #764ba220 100%);
+    background: linear-gradient(135deg, rgba(102, 126, 234, 0.13) 0%, rgba(118, 75, 162, 0.13) 100%);
     bottom: 10%;
     left: 20%;
     animation-delay: 2s;
@@ -283,7 +283,7 @@ body {
 .shape-4 {
     width: 120px;
     height: 120px;
-    background: linear-gradient(135deg, #f093fb20 0%, #f5576c20 100%);
+    background: linear-gradient(135deg, rgba(240, 147, 251, 0.13) 0%, rgba(245, 87, 108, 0.13) 100%);
     top: 30%;
     right: 30%;
     animation-delay: 3s;
@@ -421,7 +421,7 @@ body {
    =========================== */
 .skills {
     padding: 100px 20px;
-    background: linear-gradient(135deg, #667eea05 0%, #764ba205 100%);
+    background: linear-gradient(135deg, rgba(102, 126, 234, 0.03) 0%, rgba(118, 75, 162, 0.03) 100%);
 }
 
 .skills-grid {
@@ -577,7 +577,7 @@ body {
 
 .tag {
     padding: 0.25rem 0.75rem;
-    background: linear-gradient(135deg, #667eea15 0%, #764ba215 100%);
+    background: linear-gradient(135deg, rgba(102, 126, 234, 0.08) 0%, rgba(118, 75, 162, 0.08) 100%);
     color: var(--primary-color);
     border-radius: 20px;
     font-size: 0.85rem;
@@ -589,7 +589,7 @@ body {
    =========================== */
 .contact {
     padding: 100px 20px;
-    background: linear-gradient(135deg, #667eea05 0%, #764ba205 100%);
+    background: linear-gradient(135deg, rgba(102, 126, 234, 0.03) 0%, rgba(118, 75, 162, 0.03) 100%);
 }
 
 .contact-content {
