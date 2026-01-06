@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://jensen520.me/sitemap.xml
